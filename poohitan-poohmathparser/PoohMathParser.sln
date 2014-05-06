@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoohMathParser", "PoohMathParser\PoohMathParser.csproj", "{1BB0F046-440E-4533-B6AC-DB647AF471BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{A4FEBE1D-FB74-44EA-B9CB-5B32F60AADD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualTester", "VisualTester\VisualTester.csproj", "{A5AA9DCF-CAE9-4ECA-B299-002924C4A5D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1BB0F046-440E-4533-B6AC-DB647AF471BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BB0F046-440E-4533-B6AC-DB647AF471BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BB0F046-440E-4533-B6AC-DB647AF471BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BB0F046-440E-4533-B6AC-DB647AF471BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4FEBE1D-FB74-44EA-B9CB-5B32F60AADD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4FEBE1D-FB74-44EA-B9CB-5B32F60AADD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4FEBE1D-FB74-44EA-B9CB-5B32F60AADD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4FEBE1D-FB74-44EA-B9CB-5B32F60AADD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5AA9DCF-CAE9-4ECA-B299-002924C4A5D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5AA9DCF-CAE9-4ECA-B299-002924C4A5D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5AA9DCF-CAE9-4ECA-B299-002924C4A5D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5AA9DCF-CAE9-4ECA-B299-002924C4A5D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

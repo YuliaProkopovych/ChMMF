@@ -1,0 +1,83 @@
+﻿<Window x:Class="ChMIntegral.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Чисельні методи" Height="283" Width="510"
+        SizeToContent="WidthAndHeight"
+        Background="Beige" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style x:Key="styleTextBoxes" TargetType="TextBox">
+            <Setter Property="Height" Value="22" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Padding" Value="3,2" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="FontFamily" Value="Consolas, Lucida Console"/>
+        </Style>
+        <Style x:Key="styleButtons" TargetType="Button">
+            <Setter Property="Height" Value="24" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+        <Style x:Key="styleLabels" TargetType="Label">
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+        <Style x:Key="styleRadiobuttons" TargetType="RadioButton">
+            <Setter Property="Margin" Value="0 2 0 3"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+    </Window.Resources>
+    <Grid HorizontalAlignment="Left" Width="502">
+        <StackPanel HorizontalAlignment="Left" Height="148" Margin="10,15,0,0" VerticalAlignment="Top" Width="199">
+            <RadioButton Content="Метод прямокутників" Name="radioButtonRectangles" IsChecked="True" Style="{StaticResource styleRadiobuttons}" Checked="radioButton_Checked"/>
+            <RadioButton Content="Метод лівих прямокутників" Name="radioButtonLeftRectangles" Style="{StaticResource styleRadiobuttons}" Checked="radioButton_Checked"/>
+            <RadioButton Content="Метод правих прямокутників" Name="radioButtonRightRectangles" Style="{StaticResource styleRadiobuttons}" Checked="radioButton_Checked"/>
+            <RadioButton Content="Метод трапецій" Name="radioButtonTrapeze" Style="{StaticResource styleRadiobuttons}" Checked="radioButton_Checked"/>
+            <RadioButton Content="Метод парабол" Name="radioButtonParabola" Style="{StaticResource styleRadiobuttons}" Checked="radioButton_Checked"/>
+            <RadioButton Content="Метод Гауса" Name="radioButtonGauss" Style="{StaticResource styleRadiobuttons}" Checked="radioButton_Checked"/>
+            <RadioButton Content="Метод Чебишева" Name="radioButtonChebyshev" Style="{StaticResource styleRadiobuttons}" Checked="radioButton_Checked"/>
+        </StackPanel>
+        <StackPanel Margin="226,10,10,10" HorizontalAlignment="Left" Width="125" Height="53" VerticalAlignment="Top">
+            <Label Content="Функція" Style="{StaticResource styleLabels}"/>
+            <TextBox Name="textBoxFunction" Width="120" Style="{StaticResource styleTextBoxes}" TabIndex="1"/>          
+        </StackPanel>
+        <StackPanel Margin="369,10,10,10" HorizontalAlignment="Left" Width="125" Height="53" VerticalAlignment="Top">
+            <Label Content="Первісна" Style="{StaticResource styleLabels}"/>
+            <TextBox Name="textBoxAntiDerivative" Width="120" Style="{StaticResource styleTextBoxes}" TabIndex="2"/>
+        </StackPanel>
+        <StackPanel Margin="224,66,10,10" HorizontalAlignment="Left" Width="125" Height="53" VerticalAlignment="Top">
+            <Label Content="Проміжок" Style="{StaticResource styleLabels}"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="textBoxA" Width="60" TextAlignment="Right" Style="{StaticResource styleTextBoxes}" TabIndex="3"/>
+                <TextBox Name="textBoxB" Width="60" Style="{StaticResource styleTextBoxes}" TabIndex="4"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="369,66,0,0" HorizontalAlignment="Left" Width="125" Height="53" VerticalAlignment="Top">
+            <Label Content="Точність" Style="{StaticResource styleLabels}"/>
+            <TextBox Name="textBoxAccuracy" Width="120" Style="{StaticResource styleTextBoxes}" TabIndex="5"/>
+        </StackPanel>
+        <StackPanel Margin="10,168,0,0" HorizontalAlignment="Left" Width="147" Height="53" VerticalAlignment="Top">
+            <Label Content="Точне значення" Style="{StaticResource styleLabels}"/>
+            <TextBox Name="textBoxSuperResult" Width="140" Style="{StaticResource styleTextBoxes}" Focusable="False"/>
+        </StackPanel>
+        <StackPanel Margin="172,168,0,0" HorizontalAlignment="Left" Width="148" Height="53" VerticalAlignment="Top">
+            <Label Content="Обчислене значення" Style="{StaticResource styleLabels}"/>
+            <TextBox Name="textBoxResult" Width="140" Style="{StaticResource styleTextBoxes}" Focusable="False"/>
+        </StackPanel>
+        <StackPanel Margin="333,168,0,0" HorizontalAlignment="Left" Width="74" Height="53" VerticalAlignment="Top">
+            <Label Content="Ітерацій" Style="{StaticResource styleLabels}"/>
+            <TextBox Name="textBoxIterations" Width="60" Style="{StaticResource styleTextBoxes}" Focusable="False"/>
+        </StackPanel>
+        <StackPanel Margin="415,168,0,0" HorizontalAlignment="Left" Width="74" Height="53" VerticalAlignment="Top">
+            <Label Content="n" Style="{StaticResource styleLabels}"/>
+            <TextBox Name="textBoxN" Width="74" Style="{StaticResource styleTextBoxes}" Focusable="False"/>
+        </StackPanel>
+        <Button Name="buttonCalculate" Content="Обчислити" Margin="398,228,10,10" Width="91" Style="{StaticResource styleButtons}" Click="buttonCalculate_Click"/>
+        <Button Name="buttonDrawPlot" Content="Графік" Margin="291,228,10,10" Width="91" Style="{StaticResource styleButtons}" Click="buttonDrawPlot_Click"/>
+    </Grid>
+</Window>

@@ -1,0 +1,10 @@
+C:\Users\Yulia\Desktop\сибіль\GraphDisplay\GraficalDisplay\bin\Debug\GraficDisplay.exe
+C:\Users\Yulia\Desktop\сибіль\GraphDisplay\GraficalDisplay\bin\Debug\GraficDisplay.pdb
+C:\Users\Yulia\Desktop\сибіль\GraphDisplay\GraficalDisplay\bin\Debug\GraphLib.dll
+C:\Users\Yulia\Desktop\сибіль\GraphDisplay\GraficalDisplay\bin\Debug\GraphLib.pdb
+C:\Users\Yulia\Desktop\сибіль\GraphDisplay\GraficalDisplay\obj\Debug\GraficDisplay.csprojResolveAssemblyReference.cache
+C:\Users\Yulia\Desktop\сибіль\GraphDisplay\GraficalDisplay\obj\Debug\GraficDisplay.MainForm.resources
+C:\Users\Yulia\Desktop\сибіль\GraphDisplay\GraficalDisplay\obj\Debug\GraficDisplay.Properties.Resources.resources
+C:\Users\Yulia\Desktop\сибіль\GraphDisplay\GraficalDisplay\obj\Debug\GraficDisplay.csproj.GenerateResource.Cache
+C:\Users\Yulia\Desktop\сибіль\GraphDisplay\GraficalDisplay\obj\Debug\GraficDisplay.exe
+C:\Users\Yulia\Desktop\сибіль\GraphDisplay\GraficalDisplay\obj\Debug\GraficDisplay.pdb
