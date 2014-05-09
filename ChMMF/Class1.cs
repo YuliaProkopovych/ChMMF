@@ -248,8 +248,8 @@ namespace ChMMF
                 double[] cDot = solve(left, right, N);
                // MessageBox.Show("l" + L[0].ToString() + L[1].ToString() + L[2].ToString() + L[3].ToString() + L[4].ToString());
                 c = addRow(c, multRow(cDot, dt / 2));
-                MessageBox.Show("cdot" + multRow(cDot, dt / 2)[0].ToString() + ' ' + multRow(cDot, dt / 2)[1].ToString() + ' ' + (dt / 25).ToString() + ' ' + cDot[3].ToString() + ' ' + cDot[4].ToString());
-                MessageBox.Show("c" + c[0].ToString() + ' ' + c[1].ToString() + ' ' + c[2].ToString() + ' ' + c[3].ToString() + ' ' + c[4].ToString());
+                //MessageBox.Show("cdot" + multRow(cDot, dt / 2)[0].ToString() + ' ' + multRow(cDot, dt / 2)[1].ToString() + ' ' + (dt / 25).ToString() + ' ' + cDot[3].ToString() + ' ' + cDot[4].ToString());
+                //MessageBox.Show("c" + c[0].ToString() + ' ' + c[1].ToString() + ' ' + c[2].ToString() + ' ' + c[3].ToString() + ' ' + c[4].ToString());
             }
             
             return c;

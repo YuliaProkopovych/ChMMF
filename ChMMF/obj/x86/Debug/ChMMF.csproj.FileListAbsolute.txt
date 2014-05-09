@@ -4,9 +4,9 @@ C:\Users\Yulia\Desktop\сибіль\ChMMF\ChMMF\obj\x86\Debug\ChMMF.Properties.R
 C:\Users\Yulia\Desktop\сибіль\ChMMF\ChMMF\obj\x86\Debug\ChMMF.csproj.GenerateResource.Cache
 C:\Users\Yulia\Desktop\сибіль\ChMMF\ChMMF\bin\Debug\ChMMF.exe
 C:\Users\Yulia\Desktop\сибіль\ChMMF\ChMMF\bin\Debug\ChMMF.pdb
-C:\Users\Yulia\Desktop\сибіль\ChMMF\ChMMF\bin\Debug\GraphLib.dll
 C:\Users\Yulia\Desktop\сибіль\ChMMF\ChMMF\bin\Debug\PoohMathParser.dll
 C:\Users\Yulia\Desktop\сибіль\ChMMF\ChMMF\bin\Debug\PoohMathParser.pdb
 C:\Users\Yulia\Desktop\сибіль\ChMMF\ChMMF\bin\Debug\GraphLib.pdb
 C:\Users\Yulia\Desktop\сибіль\ChMMF\ChMMF\obj\x86\Debug\ChMMF.exe
 C:\Users\Yulia\Desktop\сибіль\ChMMF\ChMMF\obj\x86\Debug\ChMMF.pdb
+C:\Users\Yulia\Desktop\сибіль\ChMMF\ChMMF\bin\Debug\GraphLib.dll

@@ -15,9 +15,6 @@ namespace ChMMF
     {
         private int NumGraphs;
         private String CurExample = "NORMAL";
-        private String CurColorSchema = "GRAY";
-        private PrecisionTimer.Timer mTimer = null;
-        private DateTime lastTimerTick = DateTime.Now;
         private Calulator c;
         public Form1()
         {
@@ -36,7 +33,7 @@ namespace ChMMF
         {
             if (s.AutoScaleX)
             {
-                //if (idx % 2 == 0)
+                if (idx % 2 == 0)
                 {
                     int Value = (int)(s.Samples[idx].x);
                     return "" + Value;
@@ -52,12 +49,23 @@ namespace ChMMF
         }
         protected void CalcMyFunction(DataSource src, int idx, double[] c)
         {
-            for (int i = 0; i < src.Length; i++)
+            double koef = 10.0 / (1*(c.Max() - c.Min()));
+
+            //MessageBox.Show(idx.ToString());
+            //for (int j = 0; j < NumGraphs; j++)
             {
-                src.Samples[i].x = i;
-                src.Samples[i].y = (float)c[i];
+                for (int i = 0; i < src.Length; i++)
+                {
+                    src.Samples[i].x = i *(10);
+                    //MessageBox.Show(src.Samples[i].x.ToString());
+                    src.Samples[i].y = (float)(c[i] * koef);
+                    //MessageBox.Show(src.Samples[i].y.ToString());
+                }
             }
-            src.OnRenderYAxisLabel = RenderYLabel;
+
+
+               
+            
         }
         protected void CalcDataGraphs()
         {
@@ -65,7 +73,7 @@ namespace ChMMF
             this.SuspendLayout();
 
             display.DataSources.Clear();
-            display.SetDisplayRangeX(0, 10);
+            display.SetDisplayRangeX(0, int.Parse(textBox6.Text)*10);
 
             for (int j = 0; j < NumGraphs; j++)
             {
@@ -79,13 +87,18 @@ namespace ChMMF
                         this.Text = "Normal Graph";
                         display.DataSources[j].Length = int.Parse(textBox6.Text);
                         display.PanelLayout = PlotterGraphPaneEx.LayoutMode.NORMAL;
-                        display.DataSources[j].AutoScaleY = true;
+                        //display.PanelLayout = PlotterGraphPaneEx.LayoutMode.TILES_HOR;
+                        //if (j != 0)
+                        {
+                            display.DataSources[j].AutoScaleY = false;
+                        }
                         display.DataSources[j].AutoScaleX = false;
-                        display.DataSources[j].SetDisplayRangeY(-10, 10);
-                        display.DataSources[j].SetGridDistanceY((float)5);
-                        display.DataSources[j].OnRenderYAxisLabel = RenderYLabel;
+                        //display.DataSources[j].XAutoScaleOffset = 50;
+                        display.DataSources[j].SetDisplayRangeY(-2, 8);
+                        display.DataSources[j].SetGridDistanceY((float)1);
+                        //display.DataSources[j].OnRenderYAxisLabel = RenderYLabel;
                         CalcMyFunction(display.DataSources[j], j,c.calculate(j));
-
+                         { display.DataSources[j].OnRenderYAxisLabel = RenderYLabel; }
                         break;
 
                     case "NORMAL_AUTO":
@@ -225,12 +238,7 @@ namespace ChMMF
             c = new Calulator(q, u0, f, T, TN, N, textBox2.Text, textBox3.Text);
             CalcDataGraphs();
 
-            display.Refresh();
-            mTimer = new PrecisionTimer.Timer();
-            mTimer.Period = 40;                         // 20 fps
-           // mTimer.Tick += new EventHandler(OnTimerTick);
-            lastTimerTick = DateTime.Now;
-            mTimer.Start();    
+            display.Refresh();  
         }
     }
 }

@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GraphLib">
-      <HintPath>..\..\GraphDisplay\GraphLib\bin\Release\GraphLib.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -82,7 +79,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\poohitan-poohmathparser-df7013ffb1c3\PoohMathParser\PoohMathParser.csproj">
+    <ProjectReference Include="..\GraphDisplay\GraphLib\GraphLib.csproj">
+      <Project>{0C0A1F4D-1363-4544-A7C5-196C76D26CCA}</Project>
+      <Name>GraphLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\poohitan-poohmathparser\PoohMathParser\PoohMathParser.csproj">
       <Project>{1BB0F046-440E-4533-B6AC-DB647AF471BC}</Project>
       <Name>PoohMathParser</Name>
     </ProjectReference>

@@ -76,12 +76,12 @@ namespace GraphLib
         public float CurXD0 = 0;
         public float CurXD1 = 0;
 
-        public float grid_distance_x = 200;       // grid distance in samples ( draw a vertical line every 200 samples )
+        public float grid_distance_x = 20;       // grid distance in samples ( draw a vertical line every 200 samples )
         public float grid_off_x = 0;
         public float GraphCaptionLineHeight = 28;
 
-        public float pad_inter = 4;         // padding between graphs
-        public float pad_left = 10;         // left padding
+        public float pad_inter = 10;         // padding between graphs
+        public float pad_left = 20;         // left padding
         public float pad_right = 10;        // right padding
         public float pad_top = 10;          // top
         public float pad_bot = 10;          // bottom padding
@@ -230,7 +230,7 @@ namespace GraphLib
                 source.Cur_YD1 = source.YD1;
 
                 source.CurGraphHeight = CurHeight;
-                source.CurGraphWidth = CurWidth - pad_left - pad_label - pad_right;
+                source.CurGraphWidth = CurWidth-pad_left - pad_label - pad_right;
 
                 if (source.yFlip)
                 {
@@ -424,7 +424,7 @@ namespace GraphLib
                     }
                     else
                     {
-                        CurOffX = OFFX + pad_left + pad_label * ActiveSources;
+                        CurOffX = OFFX + pad_left;//pad_left +pad_label;// *ActiveSources;
                         curOffY = OFFY + pad_top;
                     }
 
@@ -475,7 +475,7 @@ namespace GraphLib
                 source.Cur_YD1 = source.YD1;
 
                 source.CurGraphHeight = CurHeigth;
-                source.CurGraphWidth = CurWidth - pad_left - pad_label - pad_right;
+                source.CurGraphWidth = CurWidth -pad_left - pad_label - pad_right;
 
                 DX = XD1 - XD0;
 
@@ -583,7 +583,7 @@ namespace GraphLib
 
                     DrawGraphCaption(CurGraphics, source, marker_pos, CurOffX + CurGraphIdx * (10 + pad_label), pad_top);
                   
-                    DrawYLabels(CurGraphics, source, marker_pos, CurOffX, curOffY);
+                   DrawYLabels(CurGraphics, source, marker_pos, CurOffX, curOffY);
 
                     if (hasBoundingBox && CurGraphIdx == ActiveSources - 1)
                     {
@@ -827,12 +827,12 @@ namespace GraphLib
                             }
                         }
 
-                        if (x > 0 && x < (source.CurGraphWidth))
+                        if (x >= 0 && x <= (source.CurGraphWidth + offset_x))
                         {                           
                             ps.Add(new Point((int)(x + offset_x+0.5f), (int)(y  + offset_y  + 0.5f)));                             
                         }
                         else if (x > source.CurGraphWidth)
-                        {                            
+                        {
                             break;
                         }
                     }
@@ -932,78 +932,81 @@ namespace GraphLib
 
         private void DrawYLabels(Graphics g, DataSource source, List<int> marker_pos,  float offset_x,  float offset_y )
         {
-            using (Brush b = new SolidBrush(source.GraphColor))
+            //if (source.OnRenderYAxisLabel != null)
             {
-                using (Pen pen = new Pen(b))
+                using (Brush b = new SolidBrush(source.GraphColor))
                 {
-                    pen.DashPattern = new float[] { 2, 2 };
-                     
-                    // draw labels for horizontal lines
-                    if (source.DY != 0)
+                    using (Pen pen = new Pen(b))
                     {
-                        float Idx = 0;
+                        pen.DashPattern = new float[] { 2, 2 };
 
-                        float y0 = (float)(source.grid_off_y * source.CurGraphHeight / source.DY + source.off_Y);
-
-                        String value = "" + Idx;
-
-                        if (source.OnRenderYAxisLabel != null)
+                        // draw labels for horizontal lines
+                        if (source.DY != 0)
                         {
-                            value = source.OnRenderYAxisLabel(source, Idx);
-                        }
+                            float Idx = 0;
 
-                        SizeF dim = g.MeasureString(value, legendFont);
-                        g.DrawString(value, legendFont, b, new PointF((int)offset_x - dim.Width, (int)(offset_y + y0 + 0.5f + dim.Height / 2)));
+                            float y0 = (float)(source.grid_off_y * source.CurGraphHeight / source.DY + source.off_Y);
 
-                        float GridDistY = source.grid_distance_y;
+                            String value = "" + Idx;
 
-                        if (source.AutoScaleY)
-                        {
-                            // calculate a matching grid distance                            
-                            GridDistY = - Utilities.MostSignificantDigit(source.DY );
-
-                            if (GridDistY == 0)
+                            if (source.OnRenderYAxisLabel != null)
                             {
-                                GridDistY =  source.grid_distance_y;
-                                 
+                                value = source.OnRenderYAxisLabel(source, Idx);
                             }
-                        }
 
-                        for (Idx =  (source.grid_off_y); Idx >  (source.Cur_YD0); Idx -=  GridDistY)
-                        {
-                            if (Idx != 0)
+                            SizeF dim = g.MeasureString(value, legendFont);
+                            g.DrawString(value, legendFont, b, new PointF((int)offset_x - dim.Width, (int)(offset_y + y0 + 0.5f + dim.Height / 2)));
+
+                            float GridDistY = source.grid_distance_y;
+
+                            if (source.AutoScaleY)
                             {
-                                float y1 = (float)((Idx) * source.CurGraphHeight) / source.DY + source.off_Y;
+                                // calculate a matching grid distance                            
+                                GridDistY = -Utilities.MostSignificantDigit(source.DY);
 
-                                value = "" + (Idx);
-
-                                if (source.OnRenderYAxisLabel != null)
+                                if (GridDistY == 0)
                                 {
-                                    value = source.OnRenderYAxisLabel(source, Idx);
+                                    GridDistY = source.grid_distance_y;
+
                                 }
+                            }
 
-                                dim = g.MeasureString(value, legendFont);
-                                g.DrawString(value, legendFont, b, new PointF((int)offset_x - dim.Width, (int)(offset_y + y1 + 0.5f + dim.Height / 2)));                                
+                            for (Idx = (source.grid_off_y); Idx > (source.Cur_YD0); Idx -= GridDistY)
+                            {
+                                if (Idx != 0)
+                                {
+                                    float y1 = (float)((Idx) * source.CurGraphHeight) / source.DY + source.off_Y;
+
+                                    value = "" + (Idx);
+
+                                    if (source.OnRenderYAxisLabel != null)
+                                    {
+                                        value = source.OnRenderYAxisLabel(source, Idx);
+                                    }
+
+                                    dim = g.MeasureString(value, legendFont);
+                                    g.DrawString(value, legendFont, b, new PointF((int)offset_x - dim.Width, (int)(offset_y + y1 + 0.5f + dim.Height / 2)));
+                                }
+                            }
+
+                            for (Idx = (source.grid_off_y); Idx < (source.Cur_YD1); Idx += GridDistY)
+                            {
+                                if (Idx != 0)
+                                {
+                                    float y2 = (float)((Idx) * source.CurGraphHeight) / source.DY + source.off_Y;
+
+                                    value = "" + (Idx);
+
+                                    if (source.OnRenderYAxisLabel != null)
+                                    {
+                                        value = source.OnRenderYAxisLabel(source, Idx);
+                                    }
+
+                                    dim = g.MeasureString(value, legendFont);
+                                    g.DrawString(value, legendFont, b, new PointF((int)offset_x - dim.Width, (int)(offset_y + y2 + 0.5f + dim.Height / 2)));
+                                }
                             }
                         }
-
-                        for (Idx =  (source.grid_off_y); Idx <  (source.Cur_YD1); Idx +=  GridDistY)
-                        {
-                            if (Idx != 0)
-                            {
-                                float y2 = (float)((Idx) * source.CurGraphHeight) / source.DY + source.off_Y;
-
-                                value = "" + (Idx);
-
-                                if (source.OnRenderYAxisLabel != null)
-                                {
-                                    value = source.OnRenderYAxisLabel(source, Idx);
-                                }                               
-
-                                dim = g.MeasureString(value, legendFont);
-                                g.DrawString(value, legendFont, b, new PointF((int)offset_x - dim.Width, (int)(offset_y + y2 + 0.5f + dim.Height / 2)));
-                            }
-                        }                             
                     }
                 }
             }
@@ -1016,6 +1019,7 @@ namespace GraphLib
         {
             using (Pen p2 = new Pen(GraphBoxColor))
             {
+
                 g.DrawLine(p2, new Point((int)(offset_x + 0.5f), (int)(offset_y + 0.5f)),
                               new Point((int)(offset_x + w - 0.5f), (int)(offset_y + 0.5f)));
 
@@ -1034,9 +1038,12 @@ namespace GraphLib
                                     float offset_x,
                                      float offset_y,
                                     float GraphCaptionLineHeight  )
+            
         {
+            //MessageBox.Show(source.CurGraphWidth.ToString());
             using (Pen p2 = new Pen(GraphBoxColor))
             {
+                //offset_x += 100;
                 g.DrawLine(p2, new Point((int)(offset_x + 0.5f), (int)(offset_y + 0.5f)),
                               new Point((int)(offset_x + source.CurGraphWidth - 0.5f), (int)(offset_y + 0.5f)));
 

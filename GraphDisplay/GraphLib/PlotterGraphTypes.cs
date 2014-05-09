@@ -67,7 +67,7 @@ namespace GraphLib
         private bool YAutoScaleGraph = false;
         private bool XAutoScaleGraph = false;
         public float XAutoScaleOffset = 100;
-        public float CurGraphHeight = 1.0f;
+        public float CurGraphHeight = 0.1f;
         public float CurGraphWidth = 1.0f;
 
         public bool AutoScaleY
