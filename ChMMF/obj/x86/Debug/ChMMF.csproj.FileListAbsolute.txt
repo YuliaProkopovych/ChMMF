@@ -10,3 +10,4 @@ C:\Users\Yulia\Desktop\сибіль\ChMMF\ChMMF\bin\Debug\GraphLib.pdb
 C:\Users\Yulia\Desktop\сибіль\ChMMF\ChMMF\obj\x86\Debug\ChMMF.exe
 C:\Users\Yulia\Desktop\сибіль\ChMMF\ChMMF\obj\x86\Debug\ChMMF.pdb
 C:\Users\Yulia\Desktop\сибіль\ChMMF\ChMMF\bin\Debug\GraphLib.dll
+C:\Users\Yulia\Desktop\сибіль\ChMMF\ChMMF\obj\x86\Debug\ChMMF.Form2.resources

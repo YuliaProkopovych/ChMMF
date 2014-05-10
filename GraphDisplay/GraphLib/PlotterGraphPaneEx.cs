@@ -341,7 +341,7 @@ namespace GraphLib
                     else
                     {
                         source.CurGraphHeight = (float)(CurHeight - pad_top - pad_bot) - GraphCaptionLineHeight;
-                        source.CurGraphWidth = CurWidth - pad_left - pad_label * ActiveSources - pad_right;
+                        source.CurGraphWidth = CurWidth - pad_left - pad_label * 10 - pad_right;
 
                     }
 
@@ -442,7 +442,7 @@ namespace GraphLib
                             DrawXLabels(CurGraphics, source, marker_pos, CurOffX, curOffY);
                         }
 
-                        DrawYLabels(CurGraphics, source, marker_pos, CurOffX + pad_label * (CurGraphIdx - ActiveSources + 1), curOffY);
+                        DrawYLabels(CurGraphics, source, marker_pos, CurOffX + pad_label * (CurGraphIdx - 15 + 1), curOffY);
                     }
                     else
                     {
@@ -538,7 +538,7 @@ namespace GraphLib
 
                     if (ActiveSources > 1)
                     {
-                        source.CurGraphHeight = (float)(CurHeigth - GraphCaptionLineHeight - pad_top - pad_bot) / ActiveSources;
+                        source.CurGraphHeight = (float)(CurHeigth - GraphCaptionLineHeight - pad_top - pad_bot) / 15;
                     }
                     else
                     {

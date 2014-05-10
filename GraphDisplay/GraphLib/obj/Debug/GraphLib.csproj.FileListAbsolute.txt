@@ -18,3 +18,4 @@ C:\Users\Yulia\Desktop\сибіль\ChMMF\GraphDisplay\GraphLib\obj\Debug\ClassL
 C:\Users\Yulia\Desktop\сибіль\ChMMF\GraphDisplay\GraphLib\obj\Debug\GraphLib.csproj.GenerateResource.Cache
 C:\Users\Yulia\Desktop\сибіль\ChMMF\GraphDisplay\GraphLib\obj\Debug\GraphLib.dll
 C:\Users\Yulia\Desktop\сибіль\ChMMF\GraphDisplay\GraphLib\obj\Debug\GraphLib.pdb
+C:\Users\Yulia\Desktop\сибіль\ChMMF\GraphDisplay\GraphLib\obj\Debug\GraphLib.csprojResolveAssemblyReference.cache
