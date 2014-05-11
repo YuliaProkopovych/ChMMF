@@ -17,6 +17,7 @@ namespace ChMMF
         private String CurExample = "NORMAL";
         private Calulator c;
         int N;
+        double TN;
         public Form1()
         {
             InitializeComponent();
@@ -47,16 +48,11 @@ namespace ChMMF
         protected void CalcMyFunction(DataSource src, int idx, double[] c)
         {
             double koef = 10.0 / (1*(c.Max() - c.Min()));
-
-            //MessageBox.Show(idx.ToString());
-            //for (int j = 0; j < NumGraphs; j++)
             {
                 for (int i = 0; i < src.Length; i++)
                 {
                     src.Samples[i].x = i *(10);
-                    //MessageBox.Show(src.Samples[i].x.ToString());
                     src.Samples[i].y = (float)(c[i] * koef);
-                    //MessageBox.Show(src.Samples[i].y.ToString());
                 }
             }
 
@@ -70,7 +66,7 @@ namespace ChMMF
             this.SuspendLayout();
 
             display.DataSources.Clear();
-            display.SetDisplayRangeX(0, N*10);
+            display.SetDisplayRangeX(0, (int)TN*10);
 
             for (int j = 0; j < NumGraphs; j++)
             {
@@ -82,22 +78,15 @@ namespace ChMMF
                 {
                     case "NORMAL":
                         this.Text = "Normal Graph";
-                        display.DataSources[j].Length = N;
+                        display.DataSources[j].Length = (int)TN+1;
                         display.PanelLayout = PlotterGraphPaneEx.LayoutMode.NORMAL;
-                        //display.PanelLayout = PlotterGraphPaneEx.LayoutMode.TILES_HOR;
-                        //if (j != 0)
-                        {
                             display.DataSources[j].AutoScaleY = false;
-                        }
                         display.DataSources[j].AutoScaleX = false;
-                        //display.DataSources[j].XAutoScaleOffset = 50;
                         double[] cc = c.calculate(j);
-                        //MessageBox.Show(cc.Min().ToString(), cc.Max().ToString());
-                        display.DataSources[j].SetDisplayRangeY(-10,10);
-                        display.DataSources[j].SetGridDistanceY((float)1);
-                        //display.DataSources[j].OnRenderYAxisLabel = RenderYLabel;
+                        display.DataSources[j].SetDisplayRangeY(-20,20);
+                        display.DataSources[j].SetGridDistanceY((float)2);
                         CalcMyFunction(display.DataSources[j], j,cc);
-                         { display.DataSources[j].OnRenderYAxisLabel = RenderYLabel; }
+ display.DataSources[j].OnRenderYAxisLabel = RenderYLabel; 
                         break;
 
                     case "NORMAL_AUTO":
@@ -180,20 +169,6 @@ namespace ChMMF
                         display.DataSources[j].SetGridDistanceY(100);
                         //CalcSinusFunction_2(display.DataSources[j], j);
                         break;
-
-                    case "ANIMATED_AUTO":
-
-                        this.Text = "Animated graphs fixed x range";
-                        display.PanelLayout = PlotterGraphPaneEx.LayoutMode.TILES_HOR;
-                        display.DataSources[j].Length = 402;
-                        display.DataSources[j].AutoScaleY = false;
-                        display.DataSources[j].AutoScaleX = true;
-                        display.DataSources[j].SetDisplayRangeY(-300, 500);
-                        display.DataSources[j].SetGridDistanceY(100);
-                        display.DataSources[j].XAutoScaleOffset = 50;
-                        //CalcSinusFunction_3(display.DataSources[j], j, 0);
-                        display.DataSources[j].OnRenderYAxisLabel = RenderYLabel;
-                        break;
                 }
             }
 
@@ -224,18 +199,18 @@ namespace ChMMF
             display.DashedGridColor = Color.LightGray;
         }
 
-        public void buttonClick(string text1, string text2, string text3, string text4, string text5, string text6)
+        public void buttonClick(string text1, string text2, string text3, string text4, string text5, string text6, string text7)
         {
-            double TN = double.Parse(text5);
+            TN = double.Parse(text5);
             N = int.Parse(text6);
-            NumGraphs = N;
+            NumGraphs = (int)TN;
             double T = double.Parse(text4);
-            MessageBox.Show(T.ToString());
+            double TL = double.Parse(text7);
             PoohMathParser.MathExpression f = new PoohMathParser.MathExpression(text3);
             PoohMathParser.MathExpression u0 = new PoohMathParser.MathExpression(text2);
             PoohMathParser.MathExpression q = new PoohMathParser.MathExpression(text1);
             string u0text = text2;
-            c = new Calulator(q, u0, f, T, TN, N, text2, text3);
+            c = new Calulator(q, u0, f, TL, T, TN, N, text2, text3);
             CalcDataGraphs();
 
             display.Refresh();  

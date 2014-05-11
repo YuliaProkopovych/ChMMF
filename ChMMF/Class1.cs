@@ -17,6 +17,7 @@ namespace ChMMF
         MathExpression u0;
         MathExpression q;
         double T;
+        double TL;
         double TN;
         int N;
         string u0text;
@@ -26,13 +27,14 @@ namespace ChMMF
         public Calulator()
         {
         }
-        public Calulator(MathExpression m1, MathExpression m2, MathExpression m3, double d1, double d2, int i, string s1, string s2)
+        public Calulator(MathExpression m1, MathExpression m2, MathExpression m3, double d1, double d2, double d3, int i, string s1, string s2)
         {
             u0text = s1;
             fText = s2;
-            N = i;
-            T = d1;
-            TN = d2;
+            N = i+1;
+            T = d2;
+            TL = d1;
+            TN = d3;
             q = m1;
             f = m3;
             u0 = m2;
@@ -65,7 +67,7 @@ namespace ChMMF
                     {
                         A[i, j] = 0;
                     }
-                    A[i, j] *= T;
+                    A[i, j] *= TL;
                 }
             }
         }
@@ -88,7 +90,7 @@ namespace ChMMF
                 else
                 {
                     MathExpression m1 = new MathExpression("(" + fTextNew + ")*(x-" + xi_1.ToString() + ")");
-                    L[i] = Numerics.gauss(m1, xi_1, xi, 0.0001).Item1 / h +T* q.Calculate(tj1);
+                    L[i] = Numerics.gauss(m1, xi_1, xi, 0.0001).Item1 / h + q.Calculate(tj1);
                 }
             }
         }
@@ -133,7 +135,6 @@ namespace ChMMF
 
                         MathExpression mTemp = new MathExpression("(x-" + xi.ToString() + ")*(" + xi1.ToString() + "-x)");
                         M[i - 1, j - 1] = Numerics.gauss(mTemp, xi, xi1, 0.0001).Item1 / (h * h);
-                        //MessageBox.Show(i.ToString()+j.ToString());
                     }
                     else if (i == j)
                     {
@@ -227,7 +228,7 @@ namespace ChMMF
             calcM();
             calcA();
             calcU0();
-            dt = TN / N;
+            dt = T / TN;
 
         }
         public double[] calculate(int idx)
@@ -245,8 +246,6 @@ namespace ChMMF
                 double[,] left = plusMatr(M, multByNumber(A, dt));
                 double[] cDot = solve(left, right, N);
                 c = addRow(c, multRow(cDot, dt / 2));
-                //MessageBox.Show("cdot" + multRow(cDot, dt / 2)[0].ToString() + ' ' + multRow(cDot, dt / 2)[1].ToString() + ' ' + (dt / 25).ToString() + ' ' + cDot[3].ToString() + ' ' + cDot[4].ToString());
-                //MessageBox.Show("c" + c[0].ToString() + ' ' + c[1].ToString() + ' ' + c[2].ToString() + ' ' + c[3].ToString() + ' ' + c[4].ToString());
             }
             
             return c;

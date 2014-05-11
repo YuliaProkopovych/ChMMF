@@ -81,7 +81,7 @@ namespace GraphLib
         public float GraphCaptionLineHeight = 28;
 
         public float pad_inter = 10;         // padding between graphs
-        public float pad_left = 20;         // left padding
+        public float pad_left = 35;         // left padding
         public float pad_right = 10;        // right padding
         public float pad_top = 10;          // top
         public float pad_bot = 10;          // bottom padding
@@ -442,7 +442,7 @@ namespace GraphLib
                             DrawXLabels(CurGraphics, source, marker_pos, CurOffX, curOffY);
                         }
 
-                        DrawYLabels(CurGraphics, source, marker_pos, CurOffX + pad_label * (CurGraphIdx - 15 + 1), curOffY);
+                        DrawYLabels(CurGraphics, source, marker_pos, CurOffX + pad_label * (CurGraphIdx - ActiveSources + 1), curOffY);
                     }
                     else
                     {
@@ -812,7 +812,7 @@ namespace GraphLib
                         coff_x = off_X;     // avoid dragging in x-autoscale mode
                     }
 
-                    for (int i = 0; i < data.Length - 1; i += DownSample)
+                    for (int i = 0; i < data.Length; i += DownSample)
                     {
                         float x = data[i].x  * mult_x   + coff_x;
                         float y = data[i].y  * mult_y + source.off_Y;
@@ -902,7 +902,7 @@ namespace GraphLib
                                 {
                                     float x = data[i].x * mult_x   + coff_x;
 
-                                    String value = "" + data[i].x;
+                                    String value = "" + data[i].x.ToString();
 
                                     if (source.OnRenderXAxisLabel != null)
                                     {
@@ -917,7 +917,8 @@ namespace GraphLib
                                     else
                                     {
                                         SizeF dim = g.MeasureString(value, legendFont);
-                                        g.DrawString(value, legendFont, b, new PointF((int)(0.5f + x + offset_x + 4 - dim.Width / 2), GraphCaptionLineHeight + offset_y + source.CurGraphHeight - 14));
+                                       // MessageBox.Show(data[i].x.ToString());
+                                        g.DrawString((data[i].x/100).ToString(), legendFont, b, new PointF((int)(0.5f + x + offset_x + 4 - dim.Width / 2), GraphCaptionLineHeight + offset_y + source.CurGraphHeight - 14));
 
                                     }
                                 }
