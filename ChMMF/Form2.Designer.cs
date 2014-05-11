@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -42,8 +44,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,6 +68,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(278, 446);
             this.panel1.TabIndex = 9;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(170, 173);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(65, 20);
+            this.textBox7.TabIndex = 14;
+            this.textBox7.Text = "1";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(23, 176);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(20, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "TL";
             // 
             // button1
             // 
@@ -94,7 +111,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(65, 20);
             this.textBox6.TabIndex = 10;
-            this.textBox6.Text = "10";
+            this.textBox6.Text = "20";
             // 
             // textBox5
             // 
@@ -102,7 +119,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(65, 20);
             this.textBox5.TabIndex = 9;
-            this.textBox5.Text = "20";
+            this.textBox5.Text = "10";
             // 
             // label5
             // 
@@ -119,7 +136,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(65, 20);
             this.textBox4.TabIndex = 7;
-            this.textBox4.Text = "10";
+            this.textBox4.Text = "5";
             // 
             // label1
             // 
@@ -180,23 +197,6 @@
             this.label4.Size = new System.Drawing.Size(14, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "T";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(23, 176);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(20, 13);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "TL";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(170, 173);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(65, 20);
-            this.textBox7.TabIndex = 14;
-            this.textBox7.Text = "1";
             // 
             // Form2
             // 

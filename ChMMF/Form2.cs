@@ -20,11 +20,6 @@ namespace ChMMF
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (form != null)
-            {
-                //form.Close();
-                
-            }
             form = new Form1();
             form.Show();
             form.buttonClick(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text);

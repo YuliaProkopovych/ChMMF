@@ -47,18 +47,14 @@ namespace ChMMF
         }
         protected void CalcMyFunction(DataSource src, int idx, double[] c)
         {
-            double koef = 10.0 / (1*(c.Max() - c.Min()));
+            double koef = 10.0 / (1 * (c.Max() - c.Min()));
             {
                 for (int i = 0; i < src.Length; i++)
                 {
-                    src.Samples[i].x = i *(10);
+                    src.Samples[i].x = i * (10);
                     src.Samples[i].y = (float)(c[i] * koef);
                 }
             }
-
-
-               
-            
         }
         protected void CalcDataGraphs()
         {
@@ -66,7 +62,7 @@ namespace ChMMF
             this.SuspendLayout();
 
             display.DataSources.Clear();
-            display.SetDisplayRangeX(0, (int)TN*10);
+            display.SetDisplayRangeX(0, (int)TN * 10);
 
             for (int j = 0; j < NumGraphs; j++)
             {
@@ -78,26 +74,15 @@ namespace ChMMF
                 {
                     case "NORMAL":
                         this.Text = "Normal Graph";
-                        display.DataSources[j].Length = (int)TN+1;
+                        display.DataSources[j].Length = (int)TN + 1;
                         display.PanelLayout = PlotterGraphPaneEx.LayoutMode.NORMAL;
-                            display.DataSources[j].AutoScaleY = false;
+                        display.DataSources[j].AutoScaleY = false;
                         display.DataSources[j].AutoScaleX = false;
                         double[] cc = c.calculate(j);
-                        display.DataSources[j].SetDisplayRangeY(-20,20);
+                        display.DataSources[j].SetDisplayRangeY(-20, 20);
                         display.DataSources[j].SetGridDistanceY((float)2);
-                        CalcMyFunction(display.DataSources[j], j,cc);
- display.DataSources[j].OnRenderYAxisLabel = RenderYLabel; 
-                        break;
-
-                    case "NORMAL_AUTO":
-                        this.Text = "Normal Graph Autoscaled";
-                        display.DataSources[j].Length = 5800;
-                        display.PanelLayout = PlotterGraphPaneEx.LayoutMode.NORMAL;
-                        display.DataSources[j].AutoScaleY = true;
-                        display.DataSources[j].SetDisplayRangeY(-300, 300);
-                        display.DataSources[j].SetGridDistanceY(100);
+                        CalcMyFunction(display.DataSources[j], j, cc);
                         display.DataSources[j].OnRenderYAxisLabel = RenderYLabel;
-                        //CalcSinusFunction_0(display.DataSources[j], j);
                         break;
 
                     case "STACKED":
@@ -213,7 +198,7 @@ namespace ChMMF
             c = new Calulator(q, u0, f, TL, T, TN, N, text2, text3);
             CalcDataGraphs();
 
-            display.Refresh();  
+            display.Refresh();
         }
     }
 }
